@@ -1,0 +1,21 @@
+install node and node dependenies:
+node-fetch
+crypto-js
+request
+
+Run: node app.js
+
+add your bitfinex api key in auth.js, namely: apiKey and apiSecret
+additional information for utilising bitfinex api: https://docs.bitfinex.com/docs/introduction
+
+the basics of the algo:
+data for sma calculation is captured from the public api endpoint: https://api-pub.bitfinex.com/v2/candles/trade:5m:tBTCUSD/hist
+This trading bot creates two sma lines: a 21 candle and 100 candle on the 5 minute candle chart
+The bot finds the difference between these sma values sma_21 - sma_100
+if the difference is positve:
+  trend is positve and given other conditions (specified in code)
+  authenticate and make a long trade
+else
+  short, given other conditions (specified in code)
+
+the code lies within a timer which fetches ticker data every two seconds
